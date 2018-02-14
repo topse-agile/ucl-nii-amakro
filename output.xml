@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.0.2 (Python 3.6.1 on win32)" generated="20180214 17:44:04.096">
+<suite id="s1" name="RFSampleAcceptanceTest" source="H:\ucl-nii-amakro\src\test\resources\scenarios\RFSampleAcceptanceTest.txt">
+<test id="s1-t1" name="Add Operation Works Well">
+<kw name="Add Operation Workflow">
+<arguments>
+<arg>1</arg>
+<arg>1</arg>
+<arg>2</arg>
+</arguments>
+<kw name="Open Application Page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:9080/RFSample/calculate</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:04.329" level="INFO">Opening browser 'chrome' to base url 'http://localhost:9080/RFSample/calculate'</msg>
+<status status="PASS" starttime="20180214 17:44:04.329" endtime="20180214 17:44:08.317"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:04.328" endtime="20180214 17:44:08.317"></status>
+</kw>
+<kw name="Calculate In Application Page">
+<arguments>
+<arg>${arg1}</arg>
+<arg>${arg2}</arg>
+</arguments>
+<assign>
+<var>${calc_value}</var>
+</assign>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>arg1</arg>
+<arg>${arg1}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:08.319" level="INFO">Typing text '1' into text field 'arg1'</msg>
+<status status="PASS" starttime="20180214 17:44:08.319" endtime="20180214 17:44:08.418"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>arg2</arg>
+<arg>${arg2}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:08.419" level="INFO">Typing text '1' into text field 'arg2'</msg>
+<status status="PASS" starttime="20180214 17:44:08.419" endtime="20180214 17:44:08.483"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<msg timestamp="20180214 17:44:08.483" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20180214 17:44:08.483" endtime="20180214 17:44:08.590"></status>
+</kw>
+<kw name="Get Value" library="Selenium2Library">
+<doc>Returns the value attribute of element identified by `locator`.</doc>
+<arguments>
+<arg>result</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<msg timestamp="20180214 17:44:08.619" level="INFO">${result} = 2</msg>
+<status status="PASS" starttime="20180214 17:44:08.590" endtime="20180214 17:44:08.619"></status>
+</kw>
+<msg timestamp="20180214 17:44:08.619" level="INFO">${calc_value} = 2</msg>
+<status status="PASS" starttime="20180214 17:44:08.318" endtime="20180214 17:44:08.619"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${calc_value}</arg>
+<arg>${expected}</arg>
+</arguments>
+<status status="PASS" starttime="20180214 17:44:08.619" endtime="20180214 17:44:08.619"></status>
+</kw>
+<kw name="Close Application Page">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20180214 17:44:08.620" endtime="20180214 17:44:11.718"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:08.620" endtime="20180214 17:44:11.718"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:04.328" endtime="20180214 17:44:11.718"></status>
+</kw>
+<kw name="Add Operation Workflow">
+<arguments>
+<arg>100</arg>
+<arg>200</arg>
+<arg>300</arg>
+</arguments>
+<kw name="Open Application Page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:9080/RFSample/calculate</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:11.721" level="INFO">Opening browser 'chrome' to base url 'http://localhost:9080/RFSample/calculate'</msg>
+<status status="PASS" starttime="20180214 17:44:11.721" endtime="20180214 17:44:15.595"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:11.720" endtime="20180214 17:44:15.595"></status>
+</kw>
+<kw name="Calculate In Application Page">
+<arguments>
+<arg>${arg1}</arg>
+<arg>${arg2}</arg>
+</arguments>
+<assign>
+<var>${calc_value}</var>
+</assign>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>arg1</arg>
+<arg>${arg1}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:15.596" level="INFO">Typing text '100' into text field 'arg1'</msg>
+<status status="PASS" starttime="20180214 17:44:15.596" endtime="20180214 17:44:15.690"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>arg2</arg>
+<arg>${arg2}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:15.690" level="INFO">Typing text '200' into text field 'arg2'</msg>
+<status status="PASS" starttime="20180214 17:44:15.690" endtime="20180214 17:44:15.757"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<msg timestamp="20180214 17:44:15.758" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20180214 17:44:15.757" endtime="20180214 17:44:15.861"></status>
+</kw>
+<kw name="Get Value" library="Selenium2Library">
+<doc>Returns the value attribute of element identified by `locator`.</doc>
+<arguments>
+<arg>result</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<msg timestamp="20180214 17:44:15.890" level="INFO">${result} = 300</msg>
+<status status="PASS" starttime="20180214 17:44:15.861" endtime="20180214 17:44:15.890"></status>
+</kw>
+<msg timestamp="20180214 17:44:15.890" level="INFO">${calc_value} = 300</msg>
+<status status="PASS" starttime="20180214 17:44:15.595" endtime="20180214 17:44:15.890"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${calc_value}</arg>
+<arg>${expected}</arg>
+</arguments>
+<status status="PASS" starttime="20180214 17:44:15.890" endtime="20180214 17:44:15.890"></status>
+</kw>
+<kw name="Close Application Page">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20180214 17:44:15.891" endtime="20180214 17:44:18.967"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:15.890" endtime="20180214 17:44:18.968"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:11.719" endtime="20180214 17:44:18.968"></status>
+</kw>
+<kw name="Add Operation Workflow">
+<arguments>
+<arg>XYZ</arg>
+<arg>150</arg>
+<arg>N/A</arg>
+</arguments>
+<kw name="Open Application Page">
+<kw name="Open Browser" library="Selenium2Library">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:9080/RFSample/calculate</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:18.975" level="INFO">Opening browser 'chrome' to base url 'http://localhost:9080/RFSample/calculate'</msg>
+<status status="PASS" starttime="20180214 17:44:18.973" endtime="20180214 17:44:24.438"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:18.972" endtime="20180214 17:44:24.439"></status>
+</kw>
+<kw name="Calculate In Application Page">
+<arguments>
+<arg>${arg1}</arg>
+<arg>${arg2}</arg>
+</arguments>
+<assign>
+<var>${calc_value}</var>
+</assign>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>arg1</arg>
+<arg>${arg1}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:24.440" level="INFO">Typing text 'XYZ' into text field 'arg1'</msg>
+<status status="PASS" starttime="20180214 17:44:24.440" endtime="20180214 17:44:24.554"></status>
+</kw>
+<kw name="Input Text" library="Selenium2Library">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>arg2</arg>
+<arg>${arg2}</arg>
+</arguments>
+<msg timestamp="20180214 17:44:24.555" level="INFO">Typing text '150' into text field 'arg2'</msg>
+<status status="PASS" starttime="20180214 17:44:24.554" endtime="20180214 17:44:24.641"></status>
+</kw>
+<kw name="Submit Form" library="Selenium2Library">
+<doc>Submits a form identified by `locator`.</doc>
+<msg timestamp="20180214 17:44:24.641" level="INFO">Submitting form 'None'.</msg>
+<status status="PASS" starttime="20180214 17:44:24.641" endtime="20180214 17:44:24.739"></status>
+</kw>
+<kw name="Get Value" library="Selenium2Library">
+<doc>Returns the value attribute of element identified by `locator`.</doc>
+<arguments>
+<arg>result</arg>
+</arguments>
+<assign>
+<var>${result}</var>
+</assign>
+<msg timestamp="20180214 17:44:24.766" level="INFO">${result} = N/A</msg>
+<status status="PASS" starttime="20180214 17:44:24.740" endtime="20180214 17:44:24.766"></status>
+</kw>
+<msg timestamp="20180214 17:44:24.766" level="INFO">${calc_value} = N/A</msg>
+<status status="PASS" starttime="20180214 17:44:24.439" endtime="20180214 17:44:24.766"></status>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are unequal.</doc>
+<arguments>
+<arg>${calc_value}</arg>
+<arg>${expected}</arg>
+</arguments>
+<status status="PASS" starttime="20180214 17:44:24.767" endtime="20180214 17:44:24.767"></status>
+</kw>
+<kw name="Close Application Page">
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20180214 17:44:24.767" endtime="20180214 17:44:27.850"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:24.767" endtime="20180214 17:44:27.851"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:18.970" endtime="20180214 17:44:27.851"></status>
+</kw>
+<status status="PASS" starttime="20180214 17:44:04.323" endtime="20180214 17:44:27.853" critical="yes"></status>
+</test>
+<status status="PASS" starttime="20180214 17:44:04.099" endtime="20180214 17:44:27.862"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="RFSampleAcceptanceTest">RFSampleAcceptanceTest</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
