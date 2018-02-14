@@ -13,7 +13,13 @@ public class CalculatorServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setAttribute("arg1", null);
+        SqliteSample sqliteSample = new SqliteSample();
+        try {
+        	sqliteSample.checkSomething();
+        } catch (ClassNotFoundException e) {
+        	
+        }
+    	request.setAttribute("arg1", null);
         request.setAttribute("arg2", null);
         request.setAttribute("result", null);
         request.getRequestDispatcher("calculator.jsp").forward(request, response);
