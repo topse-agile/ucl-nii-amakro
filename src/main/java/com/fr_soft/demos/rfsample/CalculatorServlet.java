@@ -15,7 +15,7 @@ public class CalculatorServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         SqliteSample sqliteSample = new SqliteSample();
         try {
-        	sqliteSample.checkSomething();
+        	sqliteSample.createTable();
         } catch (ClassNotFoundException e) {
         	
         }

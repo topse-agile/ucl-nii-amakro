@@ -12,5 +12,6 @@
 	<classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/robotframework/robotframework/2.9.1/robotframework-2.9.1.jar"/>
 	<classpathentry kind="lib" path="sqlite-jdbc-3.21.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
