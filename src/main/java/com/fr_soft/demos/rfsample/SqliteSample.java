@@ -59,4 +59,75 @@ public class SqliteSample
       }
     }
   }
+public void insertDemoData() throws ClassNotFoundException
+  {
+  	String url = "jdbc:sqlite:H://ucl-nii-amakro/sample";
+    Class.forName("org.sqlite.JDBC");
+	
+    Connection connection = null;
+    try
+    {
+      	connection = DriverManager.getConnection(url);
+      	Statement statement = connection.createStatement();
+
+	    int flag = statement.executeUpdate("insert into "+ this.getTableName() 
+	    +"(name, amount, threshold) values ('apple', 10, 11), ('orange', 100, 10), ('mango', 100, 9);");
+    }
+    catch(SQLException e)
+    {
+      System.err.println(e.getMessage());
+    }
+    finally
+    {
+      try
+      {
+          connection.close();
+      }
+      catch(SQLException e)
+      {
+        System.err.println(e);
+      }
+    }
+  }
+  
+  public void countStock() throws ClassNotFoundException
+  {
+  	String url = "jdbc:sqlite:H://ucl-nii-amakro/sample";
+    Class.forName("org.sqlite.JDBC");
+	
+    Connection connection = null;
+    try
+    {
+      	connection = DriverManager.getConnection(url);
+      	Statement statement = connection.createStatement();
+
+	    ResultSet rs = statement.executeQuery("select * from "+ this.getTableName());
+	    while(rs.next()) {
+	    	if (this.compareStock(rs.getInt("amount"), rs.getInt("threshold")))
+	    	{
+	    		System.out.println(rs.getString("name"));
+	    	}
+	    }
+    }
+    catch(SQLException e)
+    {
+      System.err.println(e.getMessage());
+    }
+    finally
+    {
+      try
+      {
+        if(connection != null)
+          connection.close();
+      }
+      catch(SQLException e)
+      {
+        System.err.println(e);
+      }
+    }
+  }
+  
+  public boolean compareStock(int amount, int threshold) {
+  	return amount<=threshold;
+  }
 }

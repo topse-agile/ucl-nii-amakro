@@ -27,10 +27,8 @@ public class CreateDBTest {
 	      statement.setQueryTimeout(30);  // set timeout to 30 sec.
 
 	      ResultSet rs = statement.executeQuery("select * from sqlite_master where type='table'");
-	      while(rs.next())
-	      {  
+	      rs.next();
 	    	assertEquals(rs.getString("name"), "stock");
-	      }
 	    }
 	    catch(Exception e)
 	    {
@@ -47,31 +45,48 @@ public class CreateDBTest {
 		}
 
 	    Connection connection = null;
+    	SqliteSample sqliteSample = new SqliteSample();
 	    try
 	    {
-	    	SqliteSample sqliteSample = new SqliteSample();
 	        sqliteSample.createTable();
 	    	
 	      connection = DriverManager.getConnection("jdbc:sqlite:"+sqliteSample.getDbName());
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);
-	      
-	      System.out.println("insert into "+ sqliteSample.getTableName() 
-	      +"(name, amount, threshold) values ('apple', 100, 10);");
-	      
-	      int flag = statement.executeUpdate("insert into "+ sqliteSample.getTableName() 
-	      +"(name, amount, threshold) values ('apple', 100, 10);");
-	      
-	      ResultSet rs = statement.executeQuery("select count(*) from "+ sqliteSample.getTableName());
+	      sqliteSample.insertDemoData();
 
-	      while(rs.next()){
-	    	  System.out.println(rs.getString("name"));
-	      }
+	    sqliteSample.countStock();
+	      
+	      ResultSet rs = statement.executeQuery("select * from "+ sqliteSample.getTableName());
+
+	      rs.next();
+    	  assertEquals(rs.getString("name"), "apple");
+    	  assertEquals(rs.getString("amount"), "100");
+    	  assertEquals(rs.getString("threshold"), "11");
+
+	      rs.next();
+    	  assertEquals(rs.getString("name"), "orange");
+    	  assertEquals(rs.getString("amount"), "100");
+    	  assertEquals(rs.getString("threshold"), "10");
+
+	      rs.next();
+    	  assertEquals(rs.getString("name"), "mango");
+    	  assertEquals(rs.getString("amount"), "100");
+    	  assertEquals(rs.getString("threshold"), "9");
 	    
 	    }catch(Exception e){
 	
 	    }
 	}
+	
+	@Test
+	public void test_compareStock()throws IOException{
+    	SqliteSample sqliteSample = new SqliteSample();
+    	assertFalse(sqliteSample.compareStock(100, 10));
+    	assertTrue(sqliteSample.compareStock(10, 10));
+    	assertTrue(sqliteSample.compareStock(9, 10));
+	}
+	
 	
 }
 
