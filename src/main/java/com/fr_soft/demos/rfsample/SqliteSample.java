@@ -28,14 +28,7 @@ public class SqliteSample
 		return new File(".").getAbsoluteFile().getParent();
 	}
 
-  public void createTable() throws ClassNotFoundException
-  {
-    Class.forName("org.sqlite.JDBC");
-	
-    try
-    {
-      	this.connection = DriverManager.getConnection(this.url);
-      	this.statement = this.connection.createStatement();
+public void createTable() throws ClassNotFoundException {
 		String sql = "CREATE TABLE IF NOT EXISTS " + this.getTableName()
             + "	  (id          	  INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "   name            TEXT,"
@@ -44,6 +37,24 @@ public class SqliteSample
             + "   updated_at	  TimeStamp DATETIME DEFAULT CURRENT_TIMESTAMP,"
             + "   notified_at	  TimeStamp DATETIME DEFAULT CURRENT_TIMESTAMP"
             +");";
+            this.sqlStatement(sql);
+}
+
+public void insertDemoData() throws ClassNotFoundException {
+		String sql = "insert into "+ this.getTableName() 
+	    +"(name, amount, threshold) values ('apple', 10, 11), ('orange', 100, 10), ('mango', 100, 9);";
+            this.sqlStatement(sql);
+}
+
+  public void sqlStatement(String sql) throws ClassNotFoundException
+  {
+    Class.forName("org.sqlite.JDBC");
+	
+    try
+    {
+      	this.connection = DriverManager.getConnection(this.url);
+      	this.statement = this.connection.createStatement();
+
 
       this.statement.execute(sql);
     }
@@ -57,34 +68,6 @@ public class SqliteSample
       {
         if(this.connection != null)
           this.connection.close();
-      }
-      catch(SQLException e)
-      {
-        System.err.println(e);
-      }
-    }
-  }
-public void insertDemoData() throws ClassNotFoundException
-  {
-    Class.forName("org.sqlite.JDBC");
-	
-    try
-    {
-      	this.connection = DriverManager.getConnection(this.url);
-      	this.statement = this.connection.createStatement();
-
-	    int flag = this.statement.executeUpdate("insert into "+ this.getTableName() 
-	    +"(name, amount, threshold) values ('apple', 10, 11), ('orange', 100, 10), ('mango', 100, 9);");
-    }
-    catch(SQLException e)
-    {
-      System.err.println(e.getMessage());
-    }
-    finally
-    {
-      try
-      {
- 		this.connection.close();
       }
       catch(SQLException e)
       {
