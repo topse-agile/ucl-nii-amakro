@@ -85,6 +85,11 @@ public class CreateDBTest {
     	assertTrue(sqliteSample.compareStock(9, 10));
 	}
 	
+	@Test
+	public void test_send_Notification(){
+		//need to write this code
+	}
+	
 	
 }
 
