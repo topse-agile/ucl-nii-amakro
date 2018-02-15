@@ -54,25 +54,23 @@ public class CreateDBTest {
 	      Statement statement = connection.createStatement();
 	      statement.setQueryTimeout(30);
 	      sqliteSample.insertDemoData();
-
-	    sqliteSample.countStock();
 	      
 	      ResultSet rs = statement.executeQuery("select * from "+ sqliteSample.getTableName());
 
 	      rs.next();
     	  assertEquals(rs.getString("name"), "apple");
-    	  assertEquals(rs.getString("amount"), "100");
-    	  assertEquals(rs.getString("threshold"), "11");
+    	  assertNotEquals(rs.getInt("amount"), 100);
+    	  assertEquals(rs.getInt("threshold"), 11);
 
 	      rs.next();
     	  assertEquals(rs.getString("name"), "orange");
-    	  assertEquals(rs.getString("amount"), "100");
-    	  assertEquals(rs.getString("threshold"), "10");
+    	  assertEquals(rs.getInt("amount"), 100);
+    	  assertEquals(rs.getInt("threshold"), 10);
 
 	      rs.next();
     	  assertEquals(rs.getString("name"), "mango");
-    	  assertEquals(rs.getString("amount"), "100");
-    	  assertEquals(rs.getString("threshold"), "9");
+    	  assertEquals(rs.getInt("amount"), 100);
+    	  assertEquals(rs.getInt("threshold"), 9);
 	    
 	    }catch(Exception e){
 	
