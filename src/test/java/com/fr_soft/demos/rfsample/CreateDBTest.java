@@ -88,7 +88,14 @@ public class CreateDBTest {
 	@Test
 	public void test_send_Notification(){
     	SqliteSample sqliteSample = new SqliteSample();
-		sqliteSample.sendNotification("Test Message");
+//		sqliteSample.sendNotification("Test Message");
+    	try {
+    		sqliteSample.countStock();
+    	}
+        catch(ClassNotFoundException e)
+        {
+          System.err.println(e);
+        }
 	}
 	
 	
