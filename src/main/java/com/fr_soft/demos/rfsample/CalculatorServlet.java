@@ -31,16 +31,26 @@ public class CalculatorServlet extends HttpServlet {
         request.setAttribute("arg1", arg1);
         String arg2 = request.getParameter("arg2");
         request.setAttribute("arg2", arg2);
+        
+//        SqliteSample sqliteSample = new SqliteSample();
+//	  	try {
+//	  		 sqliteSample.countStock();
+//	  	}
+//		catch(ClassNotFoundException e)
+//		{
+//		  System.err.println(e);
+//		}
 
         try {
             Integer v1 = Integer.parseInt(arg1);
             Integer v2 = Integer.parseInt(arg2);
             int value = v1.intValue() + v2.intValue();
             request.setAttribute("result", String.valueOf(value));
+
         } catch (NumberFormatException e) {
             request.setAttribute("result", "N/A");
         }
-
+        
         request.getRequestDispatcher("calculator.jsp").forward(request, response);
     }
 

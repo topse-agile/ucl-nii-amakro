@@ -73,10 +73,11 @@ public class SqliteSample
     }
   }
   
-  public void countStock() throws ClassNotFoundException
+  public Boolean countStock() throws ClassNotFoundException
   {
     Class.forName("org.sqlite.JDBC");
 	
+	String message = "The following product(s) ran out of stock: \n";
     try
     {
       	this.connection = DriverManager.getConnection(this.url);
@@ -84,11 +85,10 @@ public class SqliteSample
 
 	    ResultSet rs = this.statement.executeQuery("select * from "+ this.getTableName());
 	    
-		String message = "";
 	    while(rs.next()) {
 	    	if (this.compareStock(rs.getInt("amount"), rs.getInt("threshold")))
 	    	{
-	    		message = message + rs.getString("name") + " ";
+	    		message = message + rs.getString("name") + "\n";
 	    	}
 	    }
 	    this.sendNotification(message);
@@ -109,6 +109,7 @@ public class SqliteSample
         System.err.println(e);
       }
     }
+    return true;
   }
   
   public boolean compareStock(int amount, int threshold) {

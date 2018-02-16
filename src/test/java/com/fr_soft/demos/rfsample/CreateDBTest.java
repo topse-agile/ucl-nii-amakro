@@ -90,13 +90,15 @@ public class CreateDBTest {
     	SqliteSample sqliteSample = new SqliteSample();
 //		sqliteSample.sendNotification("Test Message");
     	try {
-    		sqliteSample.countStock();
+    		assertTrue(sqliteSample.countStock());
     	}
         catch(ClassNotFoundException e)
         {
           System.err.println(e);
         }
 	}
+	
+	
 	
 	
 }
