@@ -87,7 +87,8 @@ public class CreateDBTest {
 	
 	@Test
 	public void test_send_Notification(){
-		//need to write this code
+    	SqliteSample sqliteSample = new SqliteSample();
+		sqliteSample.sendNotification("Test Message");
 	}
 	
 	

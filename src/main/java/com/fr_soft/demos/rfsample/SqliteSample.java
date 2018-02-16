@@ -6,12 +6,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.File;
+//import com.twilio.*;
+import com.twilio.Twilio;
+import com.twilio.rest.api.v2010.account.Message;
+import com.twilio.type.PhoneNumber;
+
 
 public class SqliteSample
 {
 	private Connection connection;
 	private Statement statement;
 	private String url = "jdbc:sqlite:H://ucl-nii-amakro/sample";
+	
+   // Find your Account Sid and Auth Token at twilio.com/console
+    public static final String ACCOUNT_SID = "ACe5b0ea89d95a9095c2f35477de1a0a03";
+    public static final String AUTH_TOKEN = "2f353ee3aa5ed7631855301f75617d77";
 	public SqliteSample() {
 	
 	}
@@ -113,5 +122,18 @@ public void insertDemoData() throws ClassNotFoundException {
   
   public boolean compareStock(int amount, int threshold) {
   	return amount<=threshold;
+  }
+  
+  public boolean sendNotification(String message){
+	Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
+
+    Message message = Message
+        .creator(new PhoneNumber("+818065071193"),
+                 new PhoneNumber("+19165071231"),
+                 message)
+        .create();
+
+    System.out.println(message.getSid());
+   return true:
   }
 }
